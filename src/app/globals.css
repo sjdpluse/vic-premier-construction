@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+/* Provisional palette: refine red when the approved logo asset is supplied. */
+:root {
+  --background: #f5f3ed;
+  --surface: #fffefa;
+  --foreground: #242623;
+  --muted: #60635c;
+  --border: #d8d8cf;
+  --accent: #9d302c;
+  --accent-hover: #7e2522;
+  --accent-foreground: #ffffff;
+}
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-foreground: var(--accent-foreground);
+  --font-sans: Arial, Helvetica, sans-serif;
+}
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+::selection {
+  background: var(--accent);
+  color: white;
+}
+:focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: 5px;
+}
+section[id] {
+  scroll-margin-top: 2rem;
+}
+.eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0s !important;
+    animation-duration: 0s !important;
+    scroll-behavior: auto !important;
+  }
+}
