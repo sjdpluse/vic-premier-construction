@@ -13,7 +13,6 @@ export const metadata: Metadata = {
     template: `%s | ${business.name}`,
   },
   description,
-  ...(siteUrl ? { alternates: { canonical: "/" } } : {}),
   robots: { index: Boolean(siteUrl), follow: Boolean(siteUrl) },
   openGraph: {
     type: "website",
@@ -21,7 +20,6 @@ export const metadata: Metadata = {
     siteName: business.name,
     title: business.name,
     description,
-    ...(siteUrl ? { url: siteUrl } : {}),
   },
 };
 export default function RootLayout({

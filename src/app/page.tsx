@@ -1,9 +1,25 @@
+import type { Metadata, ResolvingMetadata } from "next";
+import { siteUrl } from "@/lib/site";
 import { business, contactLinks } from "@/data/business";
 import { services } from "@/data/services";
 import { Container } from "@/components/ui/container";
 import { ButtonLink } from "@/components/ui/button";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { CTASection } from "@/components/home/cta-section";
+
+// Homepage URLs belong to this route, never the shared root layout.
+export async function generateMetadata(
+  _props: unknown,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  if (!siteUrl) return {};
+
+  const inherited = await parent;
+  return {
+    alternates: { canonical: "/" },
+    openGraph: { ...inherited.openGraph, url: siteUrl },
+  };
+}
 
 export default function HomePage() {
   return (

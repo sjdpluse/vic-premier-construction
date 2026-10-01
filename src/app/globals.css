@@ -10,6 +10,8 @@
   --accent: #9d302c;
   --accent-hover: #7e2522;
   --accent-foreground: #ffffff;
+  --focus-light: #ffffff;
+  --focus-dark: #111111;
 }
 @theme inline {
   --color-background: var(--background);
@@ -31,9 +33,19 @@ body {
   background: var(--accent);
   color: white;
 }
+/* Two adjacent rings: dark on light surfaces, white on red/dark surfaces.
+   Independent of text colour; each band is 3px wide. */
 :focus-visible {
-  outline: 3px solid currentColor;
-  outline-offset: 5px;
+  outline: 3px solid var(--focus-light);
+  outline-offset: 0;
+  box-shadow: 0 0 0 6px var(--focus-dark);
+}
+@media (forced-colors: active) {
+  :focus-visible {
+    outline: 3px solid Highlight;
+    outline-offset: 3px;
+    box-shadow: none;
+  }
 }
 section[id] {
   scroll-margin-top: 2rem;
